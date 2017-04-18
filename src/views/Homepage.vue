@@ -17,6 +17,8 @@ import Spinner from '../components/Spinner.vue'
 import SlideCommodity from '../components/SlideCommodity.vue'
 
 function fetchHomepage (store) {
+  console.log('========================store');
+  console.log(store);
   return store.dispatch('FETCH_HOMEPAGE')
 }
 export default {
@@ -71,10 +73,12 @@ export default {
     console.log("test")
  },
  updated (){
-    console.log(window)
-    console.log(window.Swiper)
-    console.log(document.getElementById('#contentContent').innerHTML)
-    console.log(this)
+    //console.log(window)
+    //console.log(window.Swiper)
+    console.log('-----------------------------');
+    console.log(window);
+    console.log(window.document.getElementById('contentContent').innerHTML)
+    //console.log(this)
   },
   methods: {
     updateLikeNum () {
@@ -86,4 +90,6 @@ export default {
 </script>
 
 <style lang="stylus">
+  body
+    background green
 </style>
