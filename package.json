@@ -1,0 +1,69 @@
+{
+  "name": "cpmall-wechat-service-1.0",
+  "description": "酷派商城微信服务号 Vue.js project",
+  "author": "Kevin <zhengguangyu@coolpad.com>",
+  "private": true,
+  "scripts": {
+    "dev": "better-npm-run start-dev",
+    "start": "cross-env NODE_ENV=production node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
+  },
+  "betterScripts": {
+    "start-dev": {
+      "command": "node server",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 9090
+      }
+    }
+  },
+  "dependencies": {
+    "compression": "^1.6.2",
+    "cross-env": "^3.2.4",
+    "es6-promise": "^4.1.0",
+    "express": "^4.15.2",
+    "firebase": "^3.7.2",
+    "lru-cache": "^4.0.2",
+    "serve-favicon": "^2.4.1",
+    "vue": "^2.2.4",
+    "vue-router": "^2.3.0",
+    "vue-server-renderer": "^2.2.4",
+    "vue-style-loader": "^2.0.4",
+    "vuex": "^2.2.1",
+    "vuex-router-sync": "^4.1.2",
+    "webpack-merge": "^4.0.0",
+    "vue-awesome-swiper": "^2.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "better-npm-run": "0.0.15",
+    "buble": "^0.15.2",
+    "buble-loader": "^0.4.1",
+    "css-loader": "^0.27.3",
+    "file-loader": "^0.10.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.3",
+    "html-webpack-plugin": "^2.28.0",
+    "rimraf": "^2.6.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "sw-precache-webpack-plugin": "^0.9.1",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^11.1.4",
+    "vue-ssr-webpack-plugin": "^1.0.2",
+    "vue-template-compiler": "^2.2.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^4.1.1",
+    "cross-env": "^2.0.0",
+    "http-proxy-middleware": "^0.17.2",
+    "json-loader": "^0.5.4",
+    "whatwg-fetch": "^1.0.0",
+    "zepto": "^1.2.0"
+  }
+}
