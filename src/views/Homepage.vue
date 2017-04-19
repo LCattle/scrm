@@ -7,6 +7,7 @@
       <qqw-swiper selectorid={ brandid } brand={ brand }></qqw-swiper> -->
     </div>
     <slide-commodity :goods_list = "goods_list"></slide-commodity>
+    <product-card :good_datas = "good_datas"> </product-card>
   </div>
 </template>
 
@@ -16,18 +17,51 @@ import { mapGetters } from 'vuex'
 import Spinner from '../components/Spinner.vue'
 
 import SlideCommodity from '../components/SlideCommodity.vue'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-console.log(swiper);
+import ProductCard from '../components/ProductCard.vue'
+console.log('------------------这个组件有吗？');
+console.log(ProductCard);
 function fetchHomepage (store) {
   //return store.dispatch('FETCH_HOMEPAGE')
 }
 export default {
   name: 'homepage',
-  components: { Spinner ,SlideCommodity },
+  components: { Spinner ,SlideCommodity, ProductCard },
   data () {
     return {
       likeNum: 52,
       "goods_list": [
+        {
+          "goods_id":"2611",
+          "goods_name":"iPhone 7 Plus 透明浮雕背壳",
+          "shop_price":"128.00",
+          "goods_thumb":"http://7xp9qs.com1.z0.glb.clouddn.com/57fb2ec898f2e.jpg"
+        },
+        {
+          "goods_id":"2610",
+          "goods_name":"iPhone 7 透明浮雕背壳",
+          "shop_price":"128.00",
+          "goods_thumb":"http://7xp9qs.com1.z0.glb.clouddn.com/57fb2f1ebbb32.jpg"
+        },
+        {
+          "goods_id":"2607",
+          "goods_name":"outdoor音箱",
+          "shop_price":"599.00",
+          "goods_thumb":"http://7xp9qs.com1.z0.glb.clouddn.com/57fa047e976aa.jpg"
+        },
+        {
+          "goods_id":"2606",
+          "goods_name":"travel音箱",
+          "shop_price":"218.00",
+          "goods_thumb":"http://7xp9qs.com1.z0.glb.clouddn.com/57fa04350231c.jpg"
+        },
+        {
+          "goods_id":"2608",
+          "goods_name":"PEARLTY多一折蓝牙自拍杆",
+          "shop_price":"158.00",
+          "goods_thumb":"http://7xp9qs.com1.z0.glb.clouddn.com/57fb03001225c.jpg"
+        }
+      ],
+      "good_datas": [
         {
           "goods_id":"2611",
           "goods_name":"iPhone 7 Plus 透明浮雕背壳",
