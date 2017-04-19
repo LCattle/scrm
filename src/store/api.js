@@ -66,5 +66,9 @@ export function watchList (type, cb) {
 }
 
 export function fetchHomepage() {
-  return axios.get('/mock/main/main')
+  return axios.get('/api/index.html?from=m&f=json')
+}
+
+export function fetchProductDetail() {
+  return axios.get('/api/product/product_detail/87/?f=json')
 }

@@ -21,6 +21,7 @@ const ItemView = () => System.import('../views/ItemView.vue')
 const UserView = () => System.import('../views/UserView.vue')
 
 const Homepage = () => System.import('../views/Homepage.vue')
+// const ProductDetail = () => System.import('../views/ProductDetail.vue')
 
 export default new Router({
   mode: 'history',
@@ -32,9 +33,12 @@ export default new Router({
     // { path: '/ask/:page(\\d+)?', component: createListView('ask') },
     // { path: '/job/:page(\\d+)?', component: createListView('job') },
     { path: '/item/:id(\\d+)', component: ItemView },
+
+
+    // { path: '/product/product_detail/:id(\\d+)', component: ProductDetail },
     // { path: '/user/:id', component: UserView },
-    // { path: '/', redirect: '/top' }
-    { path: '/homepage', component: Homepage },
-    { path: '/', redirect: '/homepage' }
+     //{ path: '/', redirect: '/top' },
+    { path: '/homepage', component: Homepage }, // component 表示加载首页面
+    { path: '/', redirect: '/homepage' } // 先加载首页
   ]
 })

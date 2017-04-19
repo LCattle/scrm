@@ -3,10 +3,31 @@ const webpack = require('webpack')
 const MFS = require('memory-fs')
 const clientConfig = require('./webpack.client.config')
 const serverConfig = require('./webpack.server.config')
+const proxy = require('http-proxy-middleware');
 
 module.exports = function setupDevServer (app, cb) {
   let bundle
   let template
+
+  const options = {
+    target: 'http://test.mall.zeusis.org', // target host
+    changeOrigin: true,               // needed for virtual hosted sites
+    ws: true,                         // proxy websockets
+    // pathRewrite: function (path, req) {
+    //   if (path.contains('index.html')) {
+    //     return path
+    //   }
+    //   return path.replace('/api', '')
+    // }
+    // router: {
+    //   // when request.headers.host == 'dev.localhost:3000',
+    //   // override target 'http://www.example.org' to 'http://localhost:8000'
+    //   'dev.localhost:3000' : 'http://localhost:8000'
+    // }
+  }
+
+  // create the proxy (without context)
+  const crmProxy = proxy(options)
 
   // modify client config to work with hot middleware
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
@@ -19,10 +40,12 @@ module.exports = function setupDevServer (app, cb) {
   // dev middleware
   const clientCompiler = webpack(clientConfig)
   const devMiddleware = require('webpack-dev-middleware')(clientCompiler, {
+    // serverSideRender: false,
     publicPath: clientConfig.output.publicPath,
     noInfo: true
   })
   app.use(devMiddleware)
+  app.use('/api', crmProxy)
   clientCompiler.plugin('done', () => {
     const fs = devMiddleware.fileSystem
     const filePath = path.join(clientConfig.output.path, 'index.html')

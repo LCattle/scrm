@@ -1,3 +1,5 @@
+import { fetchHomepage } from '../api'
+
 // initial state
 const state = {
   homepageData: {
@@ -8,6 +10,8 @@ const state = {
 // mutations
 const mutations = {
  SET_HOMEPAGE: (state, { homepage }) => {
+   console.log('有数据吗?------------------');
+   console.log(homepage);
    state.homepageData = getReflectData(homepage.data.data)
  }
 }
@@ -68,5 +72,16 @@ function getReflectData(data) {
 
 export default {
   state,
-  mutations
+  actions: {
+    FETCH_HOMEPAGE: ({ commit, state }) => {
+      return fetchHomepage().then(homepage => commit('SET_HOMEPAGE', { homepage }))
+    }
+  },
+  mutations,
+  getters: {
+    activeHomepage (state) {
+      console.log(state.homepage.homepageData)
+      return state.homepage.homepageData
+    }
+  }
 }

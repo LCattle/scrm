@@ -11,17 +11,18 @@
 </template>
 
 <script>
+//import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import Spinner from '../components/Spinner.vue'
 
 import SlideCommodity from '../components/SlideCommodity.vue'
-
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+console.log(swiper);
 function fetchHomepage (store) {
-  return store.dispatch('FETCH_HOMEPAGE')
+  //return store.dispatch('FETCH_HOMEPAGE')
 }
 export default {
   name: 'homepage',
-
   components: { Spinner ,SlideCommodity },
   data () {
     return {
@@ -71,10 +72,7 @@ export default {
     console.log("test")
  },
  updated (){
-    console.log(window)
-    console.log(window.Swiper)
-    console.log(document.getElementById('#contentContent').innerHTML)
-    console.log(this)
+    console.log(document.getElementById('contentContent').innerHTML)
   },
   methods: {
     updateLikeNum () {
@@ -86,4 +84,5 @@ export default {
 </script>
 
 <style lang="stylus">
+
 </style>
